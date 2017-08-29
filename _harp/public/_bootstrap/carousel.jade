@@ -1,0 +1,20 @@
+mixin carousel(id, data)
+    //Mixin so we can have linked slides
+    mixin slide(src, alt)
+        img.d-block.img-fluid(src=src, alt=alt)
+    .carousel.slide(data-ride='carousel', id=id)
+        - index = 0;
+        .carousel-inner(role='listbox')
+            each slide in data
+                .carousel-item(class=index ? '' : 'active')
+                    if slide.href
+                        a(href=slide.href): +slide(slide.src, slide.alt)
+                    else
+                        +slide(slide.src, slide.alt)
+                - index++
+        a.carousel-control-prev(href='#' + id, role='button', data-slide='prev')
+            span.carousel-control-prev-icon(aria-hidden='true')
+            span.sr-only Previous
+        a.carousel-control-next(href='#' + id, role='button', data-slide='next')
+            span.carousel-control-next-icon(aria-hidden='true')
+            span.sr-only Next

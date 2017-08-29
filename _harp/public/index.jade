@@ -1,0 +1,80 @@
+include ./_bootstrap/carousel.jade
+-
+  var document = {
+    title: "this is a test",
+    galleryPhotos: [
+      {
+        src: "img/portfolio/fullsize/1.jpg",
+        alt: "Some Crap",
+        href: "http://www.google.com/"
+      },
+      {
+        src: "img/portfolio/fullsize/2.jpg",
+        alt: "More Crap"
+      },
+      {
+        src: "img/portfolio/fullsize/3.jpg",
+        alt: "This is even More Crap"
+      },
+      {
+        src: "img/portfolio/fullsize/4.jpg",
+        alt: "Guess What This Is?"
+      },
+      {
+        src: "img/portfolio/fullsize/5.jpg",
+        alt: "More Crap?, The Man Asks"
+      },
+      {
+          src: "img/portfolio/fullsize/6.jpg",
+          alt: "Yes Even More Crap"
+      }
+    ]
+  }
+.jumbotron
+  +carousel("carouselGalleryControls", document.galleryPhotos)
+.py-5.section
+  .container
+    .row
+      .col-md-6
+        img.img-fluid.img-thumbnail(src='https://pingendo.com/assets/photos/wireframe/photo-1.jpg')
+      .col-md-6
+        h1.text-primary HEADING
+        p.lead
+          | Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu,
+          | pretium quis, sem.
+.py-5.text-center
+  .container
+    .row
+      .col-md-4
+        .card.my-1
+          .card-block.text-center
+            h2 Small
+            h3 10 $
+          ul.list-group.list-group-flush
+            li.list-group-item Cras justo odio
+            li.list-group-item Dapibus ac facilisis in
+            li.list-group-item Vestibulum at eros
+          .card-block
+            a.btn.btn-block.btn-primary(href='#') Subscribe
+      .col-md-4
+        .card
+          .bg-primary.card-block
+            h1.card-title.text-white Normal
+            h2.text-white 20 $
+          ul.list-group.list-group-flush
+            li.list-group-item Cras justo odio
+            li.list-group-item Dapibus ac facilisis in
+            li.list-group-item Vestibulum at eros
+          .card-block
+            a.btn.btn-block.btn-lg.btn-primary(href='#') Subscribe
+      .col-md-4
+        .card.my-1
+          .card-block.text-xs-center
+            h2.card-title Large
+            h3 30 $
+          ul.list-group.list-group-flush
+            li.list-group-item Cras justo odio
+            li.list-group-item Dapibus ac facilisis in
+            li.list-group-item Vestibulum at eros
+          .card-block
+            a.btn.btn-block.btn-primary(href='#') Subscribe

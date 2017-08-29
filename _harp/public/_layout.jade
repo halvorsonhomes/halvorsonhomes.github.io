@@ -1,0 +1,53 @@
+doctype
+html(lang="en")
+  head
+    meta(name='description' content=site.description) 
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    meta(http-equiv="X-UA-Compatible" content="ie=edge")
+
+    if styles
+      each style in styles
+        link(rel='stylesheet' type='text/css')&attributes(style)
+
+    if document
+      if document.title
+      title #{ document.title } "|" #{ site.title } 
+    else
+      title #{ site.title }
+
+  body
+    nav.navbar.navbar-toggleable-md.navbar-light.bg-faded
+      button.navbar-toggler.navbar-toggler-right(type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation")
+        span.navbar-toggler-icon
+      
+      a.navbar-brand(href="#")
+          picture
+              source(type="image/svg+xml" srcset="img/logo.svg")
+              img(src="img/logo.png" alt="Halvorson Homes" width="375" height="100")
+      .collapse.navbar-collapse#navbarNav
+        ul.navbar-nav
+            each page in [{title:"Home", url:"/"},{title:"about", url:"/about/"}]
+              li.nav-item
+                a.nav-link(href=page.url)= page.title
+    .content
+      != yield
+    footer.row
+      div.col-md-6.text-center.align-self-center
+        h1: picture
+              source(type="image/svg+xml" srcset="img/logo.svg")
+              img(src="img/logo.png" alt="Halvorson Homes" width="375" height="100")
+          
+        
+          p: pre 11590 Bridle Path LN
+            | Placida, FL 33946
+            | Phone: (941) 697-7665
+      
+        div.my-3.row.text-center
+          each link in social
+            div.col-4: a(href=link.href): i.fa.fa-3x.text-primary(class=link.class)      
+      div.col-md-6.p-0
+          iframe(src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3558.0248328222547!2d-82.23631168436421!3d26.902706983131836!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88c4ab22e0e90e39%3A0x721851cc89a35b9!2sHalvorson+Homes!5e0!3m2!1sen!2sus!4v1503775143608" width="600" height="450" frameborder="0" style="border:0" allowfullscreen)
+    if scripts
+      each script in scripts
+        script(type="text/javascript")&attributes(script)

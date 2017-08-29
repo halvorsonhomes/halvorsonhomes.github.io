@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- @getBlock("meta").toHTML() %>
+  <meta name="description" content="<%- @site.description %> " /> 
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <title><%= if @document.title then "#{@document.title} | #{@site.title}" else @site.title %>
+</title>
+  
+  <!-- Load CDN Style Sheets -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
+
+  <%- @getBlock("styles").toHTML() %>
+</head>
+<body>
+  <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <a class="navbar-brand" href="#">
+      <picture>
+          <source type="image/svg+xml" srcset="img/logo.svg">
+          <img src="img/logo.png" alt="Halvorson Homes" width="375" height="100">
+        </picture>
+  </a>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+        <% for page in @getCollection("pages").toJSON(): %>
+        <li class="<%= if page.id is @document.id then 'active' else 'inactive' %> nav-item">
+            <a class="nav-link" href="<%= page.url %>">
+                <%= page.title %>
+            </a>
+        </li>
+    <% end %>
+    </ul>
+  </div>
+</nav>
+<!-- Page Content -->
+<%- @content %>
+<!-- Page Footer -->
+<footer class="row">
+  <div class="col-md-6 text-center align-self-center">
+    <h1><picture>
+          <source type="image/svg+xml" srcset="img/logo.svg">
+          <img src="img/logo.png" alt="Halvorson Homes" width="375" height="100">
+      </picture>
+    </h1>
+      <p>11590 Bridle Path LN
+      <br>Placida, FL 33946&nbsp;
+      <br> <abbr title="Phone">P:(941) 697-7665</abbr></p>
+    <!-- Socal Media Buttons -->
+  
+    <div class="my-3 row text-center">
+      <div class="col-4">
+        <a href=""><i class="fa fa-3x fa-facebook text-primary"></i></a>
+      </div>
+      <% end %>
+      <div class="col-4">
+        <a><i class="fa fa-3x fa-houzz text-primary"></i></a>
+      </div>
+      <div class="col-4">
+        <a><i class="fa fa-3x fa-instagram text-primary"></i></a>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6 p-0">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3558.0248328222547!2d-82.23631168436421!3d26.902706983131836!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88c4ab22e0e90e39%3A0x721851cc89a35b9!2sHalvorson+Homes!5e0!3m2!1sen!2sus!4v1503775143608" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe></div>
+  </div>
+</footer>
+<!-- Load CDN Javascript -->
+  <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+  <%- @getBlock('scripts').toHTML() %>
+</body>
+</html>

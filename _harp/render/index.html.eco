@@ -1,0 +1,44 @@
+--- 
+title: "Home"
+layout: "default"
+isPage: true
+carouselPhotos:
+  - src: "img/portfolio/fullsize/1.jpg"
+    alt: "Some Crap"
+    url: "http://www.google.com/"
+  - src: "img/portfolio/fullsize/2.jpg"
+    alt: "More Crap"
+  - src: "img/portfolio/fullsize/3.jpg"
+    alt: "This is even More Crap"
+  - src: "img/portfolio/fullsize/4.jpg"
+    alt: "Guess What This Is?"
+  - src: "img/portfolio/fullsize/5.jpg"
+    alt: "More Crap, The Man Asks"
+  - src: "img/portfolio/fullsize/6.jpg"
+    alt: "Yes Even More Crap "
+---
+<div class="jumbotron">  
+  <div id="carouselMainControls" class="carousel slide fluid" data-ride="carousel">
+      <div class="carousel-inner" role="listbox">
+          <% for slide, index in @document.carouselPhotos: %>
+            <div class="carousel-item <%= if index == 0 then "active"%>">
+              <% if slide.url: %>
+              <a href="<%= slide.url %>">
+              <% end %>
+              <img class="d-block img-fluid" src="<%= slide.src %>" alt="<%= slide.alt %>" width="100%" href="<%= slide.url %>">
+              <% if slide.url: %>
+              </a>
+              <% end %>
+          </div>
+          <% index++ %>
+        <% end %>
+      <a class="carousel-control-prev" href="#carouselMainControls" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselMainControls" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+  </div>
+</div>
